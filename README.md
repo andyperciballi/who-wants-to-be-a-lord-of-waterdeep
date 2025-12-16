@@ -14,7 +14,7 @@
 
 ### Planning materials:
 
-Wireframes, pseudocode, data files
+Wireframes, data files
 
 
 

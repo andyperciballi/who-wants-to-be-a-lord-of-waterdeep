@@ -1,0 +1,14 @@
+.hidden {
+  display: none;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    width: 120px;
+  }
+}

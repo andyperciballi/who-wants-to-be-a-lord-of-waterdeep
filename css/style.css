@@ -1,7 +1,7 @@
-.hidden {
-  display: none;
-}
-
+/* .hidden { */
+  /* display: none; */
+/* } */
+/*  */
 .logo {
   width: 300px;
   height: auto;
@@ -12,3 +12,8 @@
     width: 120px;
   }
 }
+
+
+/* remember to use flexbox */
+
+

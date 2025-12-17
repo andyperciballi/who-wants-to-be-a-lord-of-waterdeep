@@ -1,6 +1,6 @@
-/* .hidden { */
-  /* display: none; */
-/* } */
+.hidden {
+  display: none;
+}
 /*  */
 .logo {
   width: 300px;
@@ -11,6 +11,52 @@
   .logo {
     width: 120px;
   }
+}
+@media (max-width: 500px) {
+  .answer-btn {
+    flex: 1 1 100%;
+  }
+}
+
+
+#end-screen.win {
+  background-color: #1e3a2f;
+  color: #d1fae5;
+}
+
+#end-screen.lose {
+  background-color: #3a1e1e;
+  color: #fee2e2;
+}
+
+#end-screen.win h2 {
+  color: #34d399;
+}
+
+#end-screen.lose h2 {
+  color: #f87171;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;        /* allows wrapping into rows */
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.answer-btn {
+  flex: 1 1 calc(50% - 16px);
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.answer-btn {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 

@@ -295,14 +295,9 @@ function shuffleArray(arr) {
 showScreen("start");
 
 // Display the total number of questions available in the data bank.
-// Note: this is the raw bank size, not necessarily the size of the shuffled deck in a run.
 questionTotalEl.textContent = QUESTION_BANK.length;
 
-/*
-  NOTE: You currently have TWO endGame functions in this file (this one below + the one above).
-  In JavaScript, the second one will overwrite the first one, because they have the same name.
-  I’m not changing your code (as requested), but be aware this is why your messages/styles might act oddly.
-*/
+
 function endGame(didWin) {
   // Remove any old win/lose styling so we can apply the correct one fresh.
   endScreenEl.classList.remove("win", "lose");

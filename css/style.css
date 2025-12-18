@@ -26,24 +26,26 @@
 
 .answers {
   display: flex;
-  flex-wrap: wrap; /* allows wrapping into rows */
+  flex-wrap: wrap;
   gap: 16px;
-  margin-top: 16px;
+  margin: 16px auto 0;  /* centers the whole block */
+  max-width: 600px;     /* controls how wide the answers can get */
+  width: 100%;
 }
 
 .answer-btn {
-  flex: 1 1 calc(50% - 16px);
   padding: 12px;
   font-size: 1rem;
   cursor: pointer;
-
-  /* keep buttons evenly sized + centered */
+  flex: 1 1 calc(50% - 16px);
   min-height: 60px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 
 /* =========================
    END SCREEN STATES

@@ -98,7 +98,6 @@ function initGame() {
 ========================= */
 /*
   renderHud() updates the scoreboard display only.
-  It never modifies game logic.
 */
 function renderHud() {
   questionNumberEl.textContent = deck.length ? currentIdx + 1 : 0;

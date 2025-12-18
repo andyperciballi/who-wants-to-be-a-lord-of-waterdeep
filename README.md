@@ -7,7 +7,7 @@
 <img src="./assets/logo.png" alt="Jovial Bard logo with a lute and finger in the air" width="300">
 
 ## Getting Started
-### Play the game: (link to deployed version)
+### Play the game: https://andyperciballi.github.io/who-wants-to-be-a-lord-of-waterdeep/
 ### Instructions:
 
 - Click Start to begin a new trivia game and load a shuffled set of questions.
@@ -52,11 +52,7 @@
 
 ## Technologies Used
 
-HTML
-
-CSS
-
-JavaScript 
+HTML, CSS, JavaScript 
 
 ## Next Steps
 

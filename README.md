@@ -67,7 +67,10 @@ JavaScript
 
 - a feature to make the game scale difficulty as the user moves through the questions towards the end
 - a way to expand the pool of questions beyond the initial setup(this would be good to add pools that are randomized after the difficulty feature so questions of different difficulties would be pulled as the game progresses)
-- you could scale this game different ways, enable 2 players to take turns in head to head or simply increase the question pool
+- you could scale this game different ways, enable 2 players to take turns in head to head or simply increase the question pool 
+- enabling lifeline feature (maybe as a question skip)
+- display difficulty level of the question
+- allow for no "hard questions" setting or to scale quiz difficulty and only use one difficulty deck at a time.
 
 ## Presentation Notes
 

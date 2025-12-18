@@ -10,13 +10,11 @@
 ### Play the game: (link to deployed version)
 ### Instructions:
 
-
-
-### Planning materials:
-
-Wireframes, data files
-
-
+- Click Start to begin a new trivia game and load a shuffled set of questions.
+- Read each question carefully and select an answer by clicking one of the provided buttons.
+- The game tracks correct answers and strikes; reach 5 correct answers to win or 3 strikes to lose.
+- Feedback is shown after each answer, then the game automatically advances to the next question.
+- When the game ends, click Restart or Play Again to reset the game and try another run.
 
 ### User Stories
 
@@ -46,11 +44,11 @@ Wireframes, data files
 
 ## Attributions
 
-(Assets, icons, fonts, sound effects, etc.)
-
-
+- rules from Dungeons and Dragons Player handbook (2024)
+- General Assembly Course Lectures and materials
 - Bard character illustration generated using OpenAI’s image generation tool (DALL·E), based on a custom prompt.
-
+- MDN, stack overflow, leetcode documentation and notes
+- treehouse on youtube - coding examples
 
 ## Technologies Used
 
@@ -58,10 +56,7 @@ HTML
 
 CSS
 
-JavaScript
-
-(Any libraries or audio sources)
-
+JavaScript 
 
 ## Next Steps
 
@@ -73,6 +68,19 @@ JavaScript
 - allow for no "hard questions" setting or to scale quiz difficulty and only use one difficulty deck at a time.
 
 ## Presentation Notes
+
+I'm proud of this piece that shuffles the questions so I can add more to my question bank and scale the tool. If I tied this to an index number I couldn't easily add more questions!
+shuffleArray(arr) randomizes the order of an array using the Fisher-Yates shuffle. This ensures each playthrough gets questions in a different order. 
+Walk backwards through the array, swapping each item with a random earlier item.
+```javascript
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // random index from 0..i
+    [arr[i], arr[j]] = [arr[j], arr[i]];          // swap elements using destructuring
+  }
+  return arr; // return the shuffled array so we can assign it to deck
+}
+```
 
 ##### Disclaimer
 This project is a fan-made, non-commercial educational project

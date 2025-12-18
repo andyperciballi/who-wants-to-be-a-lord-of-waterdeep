@@ -46,6 +46,14 @@
   text-align: center;
 }
 
+#start-screen {
+  display:flex; 
+  align-items:center;
+}
+
+#start-btn {
+  display:inline-block ;
+}
 
 /* =========================
    END SCREEN STATES

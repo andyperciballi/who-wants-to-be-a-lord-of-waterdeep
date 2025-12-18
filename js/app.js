@@ -227,31 +227,7 @@ function onAnswerClick(evt) {
   }, 450);
 }
 
-/* =========================
-   END GAME
-========================= */
-/*
-  endGame(didWin, customMessage) updates the end screen to show a win or loss message,
-  then switches the app view over to the end screen.
-*/
-function endGame(didWin, customMessage) {
-  // If didWin is true, show win title + message.
-  // The `customMessage || defaultMessage` pattern uses the custom message if provided,
-  // otherwise it falls back to a default message.
-  if (didWin) {
-    endTitleEl.textContent = "You Win!";
-    endMessageEl.textContent =
-      customMessage || "You reached 5 correct answers. Glory to Waterdeep!";
-  } else {
-    // If didWin is false, show lose title + message.
-    endTitleEl.textContent = "You Lose!";
-    endMessageEl.textContent =
-      customMessage || "Three strikes. The Lords are not amused.";
-  }
 
-  // Switch the UI to the end screen so the player sees the result.
-  showScreen("end");
-}
 
 /* =========================
    SCREENS

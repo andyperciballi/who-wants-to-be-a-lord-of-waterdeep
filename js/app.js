@@ -1,4 +1,4 @@
-/* =========================
+/* ========================= 
    DATA SOURCE
 ========================= */
 /*
@@ -10,10 +10,6 @@ const QUESTION_BANK = questions;
 /* =========================
    CACHED ELEMENTS
 ========================= */
-/*
-  Cache references to DOM elements so we don’t repeatedly query the DOM.
-  This improves performance and keeps the code cleaner.
-*/
 const startScreenEl = document.getElementById("start-screen");
 const gameScreenEl = document.getElementById("game-screen");
 const endScreenEl = document.getElementById("end-screen");
@@ -36,48 +32,36 @@ const endTitleEl = document.getElementById("end-title");
 const endMessageEl = document.getElementById("end-message");
 
 /* =========================
-   STATE
-========================= */
-/*
-  These variables represent the live state of the game:
+   STATE   These variables represent the live state of the game:
   what question we’re on, how many answers are correct,
   and how many strikes the player has.
-*/
+========================= */
 let deck = [];
 let currentIdx = 0;
 let correct = 0;
 let strikes = 0;
 
-/*
-  Game rules that determine win / loss conditions.
-*/
 const WIN_TARGET = 5;
 const STRIKE_LIMIT = 3;
 
 /* =========================
    EVENT LISTENERS
-========================= */
-/*
+   
   Any of these buttons start a fresh game.
   Guard checks prevent errors if elements don’t exist.
-*/
+========================= */
 if (startBtnEl) startBtnEl.addEventListener("click", initGame);
 if (restartBtnEl) restartBtnEl.addEventListener("click", initGame);
 if (playAgainBtnEl) playAgainBtnEl.addEventListener("click", initGame);
 
-/*
-  Event delegation: listen once on the answers container
-  and detect which answer button was clicked.
-*/
-answersEl.addEventListener("click", onAnswerClick);
+/* event delegation: listen once on the answers container and detect which answer button was clicked.*/
+if (answersEl) {
+  answersEl.addEventListener("click", onAnswerClick);
+}
 
 /* =========================
    INIT / RESET
 ========================= */
-/*
-  initGame() resets all game state, shuffles questions,
-  updates the HUD, switches screens, and renders the first question.
-*/
 function initGame() {
   correct = 0;
   strikes = 0;
@@ -96,19 +80,18 @@ function initGame() {
 /* =========================
    RENDER
 ========================= */
-/*
-  renderHud() updates the scoreboard display only.
-*/
+
+/* Checking if there are any questions available
+Pulling the current question from a deck array
+Displaying the question text and category
+Creating answer buttons for each possible answer
+Resetting feedback and updating the HUD (score/progress) */
 function renderHud() {
   questionNumberEl.textContent = deck.length ? currentIdx + 1 : 0;
   correctCountEl.textContent = correct;
   strikeCountEl.textContent = strikes;
 }
 
-/*
-  renderQuestion() displays the current question,
-  category label, and dynamically generates answer buttons.
-*/
 function renderQuestion() {
   if (!deck.length) {
     questionTextEl.textContent =
@@ -138,52 +121,49 @@ function renderQuestion() {
 }
 
 /* =========================
-   ANSWER CLICK
+   ANSWERS
 ========================= */
-/*
-  Handles answer selection, updates game state,
-  checks win/loss conditions, and advances questions.
-*/
-function onAnswerClick(evt) {
-  const btn = evt.target.closest("button");
-  if (!btn || !btn.classList.contains("answer-btn")) return;
+// feedback to the user telling the result of the answer and contributing to the game logic totals
 
-  const chosenAnswer = btn.dataset.answer;
-  const q = deck[currentIdx];
-  const isCorrect = chosenAnswer === q.correctAnswer;
+function onAnswerClick(e) {
+  const btn = e.target.closest("button");
+  if (!btn) return;
 
-  if (isCorrect) {
+  const selected = btn.dataset.answer;
+  const currentQ = deck[currentIdx];
+
+  if (selected === currentQ.correctAnswer) {
     correct++;
     feedbackEl.textContent = "Correct!";
   } else {
     strikes++;
-    feedbackEl.textContent = "Wrong!";
+    feedbackEl.textContent = "Incorrect!";
   }
 
-  renderHud();
+  if (correct >= WIN_TARGET) {
+    endGame(true);
+    return;
+  }
 
-  if (correct >= WIN_TARGET) return endGame(true);
-  if (strikes >= STRIKE_LIMIT) return endGame(false);
+  if (strikes >= STRIKE_LIMIT) {
+    endGame(false);
+    return;
+  }
 
-  setTimeout(() => {
-    currentIdx++;
+  currentIdx++;
 
-    if (currentIdx >= deck.length) {
-      endGame(false, "Out of questions!");
-      return;
-    }
-
+  if (currentIdx < deck.length) {
     renderQuestion();
-  }, 1100);
+  } else {
+    endGame(false);
+  }
 }
 
 /* =========================
    SCREENS
 ========================= */
-/*
-  showScreen(which) toggles visibility so only
-  one screen is visible at a time.
-*/
+// this function removes the hidden class as the game progresses
+
 function showScreen(which) {
   startScreenEl.classList.add("hidden");
   gameScreenEl.classList.add("hidden");
@@ -195,11 +175,8 @@ function showScreen(which) {
 }
 
 /* =========================
-   UTIL
+   UTIL shuffles pseudo array so main one isn't affected
 ========================= */
-/*
-  Fisher–Yates shuffle to randomize question order.
-*/
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -211,19 +188,12 @@ function shuffleArray(arr) {
 /* =========================
    START STATE
 ========================= */
-/*
-  Initialize the app on the start screen and
-  show total available questions.
-*/
 showScreen("start");
 questionTotalEl.textContent = QUESTION_BANK.length;
 
 /* =========================
    END GAME
 ========================= */
-/*
-  Displays win or loss results and switches to the end screen.
-*/
 function endGame(didWin) {
   endScreenEl.classList.remove("win", "lose");
 

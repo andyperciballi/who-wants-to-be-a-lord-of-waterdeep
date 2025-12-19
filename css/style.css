@@ -51,9 +51,11 @@
   align-items:center;
 }
 
-#start-btn {
+#start-button {
   display:inline-block ;
+  margin: 20px; /* adds space on all sides */
 }
+
 
 /* =========================
    END SCREEN STATES

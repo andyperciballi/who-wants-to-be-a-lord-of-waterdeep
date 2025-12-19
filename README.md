@@ -48,7 +48,7 @@
 - Bard character illustration generated using OpenAI’s image generation tool (DALL·E), based on a custom prompt.
 - MDN, stack overflow, leetcode documentation and notes
 - treehouse on youtube - coding examples
-
+- ChatGPT debugging, logo creation and assistant
 ## Technologies Used
 
 HTML, CSS, JavaScript 

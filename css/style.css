@@ -20,6 +20,7 @@
   align-items: center;      /* center children horizontally */
 }
 
+
 /* =========================
    ANSWERS LAYOUT (FLEXBOX)
 ========================= */
@@ -27,34 +28,19 @@
 .answers {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;   /* center the answer blocks */
   gap: 16px;
-  margin: 16px auto 0;  /* center
-  max-width: 600px;     
+  margin: 16px auto 0;       /* removed invalid word */
+  max-width: 600px;
   width: 100%;
 }
-
 .answer-btn {
-  padding: 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  flex: 1 1 calc(50% - 16px);
-  min-height: 60px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex: 1 1 calc(50% - 16px); /* two columns */
+  max-width: 280px;
+  padding: 16px;
   text-align: center;
 }
 
-#start-screen {
-  display:flex; 
-  align-items:center;
-}
-
-#start-button {
-  display:inline-block ;
-  margin: 20px; /* adds space on all sides */
-}
 
 
 /* =========================

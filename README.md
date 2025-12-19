@@ -21,7 +21,6 @@
 **As a Player I want to: **
 + See simple instructions at the start so I know how the game works 
 + Have a start button and see instructions for the trivia game
-+ See a theme, wording, and UI to feel like Dungeons & Dragons so playing feels immersive
 + Be presented with a clear question with multiple-choice answers
 + Have my progress (question number out of 8) shown so I know how far I’ve advanced in the challenge. this could be displayed with various UI features or elements
 + See immediate feedback when I choose an answer so I know whether I was correct or not
@@ -64,6 +63,51 @@ HTML, CSS, JavaScript
 - allow for no "hard questions" setting or to scale quiz difficulty and only use one difficulty deck at a time.
 
 ## Presentation Notes
+
+onAnswerClick handles a single answer selection:
+- Figures out which answer was clicked
+- Checks if it’s correct or incorrect
+- Updates the game state (correct answers or strikes)
+- Checks win / loss conditions
+- Either moves to the next question or ends the game
+
+```Javascript 
+
+function onAnswerClick(e) {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+
+  const selected = btn.dataset.answer;
+  const currentQ = deck[currentIdx];
+
+  if (selected === currentQ.correctAnswer) {
+    correct++;
+    feedbackEl.textContent = "Correct!";
+  } else {
+    strikes++;
+    feedbackEl.textContent = "Incorrect!";
+  }
+
+  if (correct >= WIN_TARGET) {
+    endGame(true);
+    return;
+  }
+
+  if (strikes >= STRIKE_LIMIT) {
+    endGame(false);
+    return;
+  }
+
+  currentIdx++;
+
+  if (currentIdx < deck.length) {
+    renderQuestion();
+  } else {
+    endGame(false);
+  }
+}
+
+```
 
 I'm proud of this piece that shuffles the questions so I can add more to my question bank and scale the tool. If I tied this to an index number I couldn't easily add more questions!
 shuffleArray(arr) randomizes the order of an array using the Fisher-Yates shuffle. This ensures each playthrough gets questions in a different order. 

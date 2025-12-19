@@ -28,8 +28,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin: 16px auto 0;  /* centers the whole block */
-  max-width: 600px;     /* controls how wide the answers can get */
+  margin: 16px auto 0;  /* center
+  max-width: 600px;     
   width: 100%;
 }
 
